@@ -1,0 +1,23 @@
+#Create by Robert Ankersmit on 17/03/2021
+#Pseudo Code
+#1) build the app
+#2) run the unit test/s
+#3) run linter (eslint)
+#4) if test/s passes && passes linter rules -> merge to github repository
+name: My First Continuous Integration
+
+on:
+  pull_request:
+  branches: [master]
+
+jobs:
+  test_pull_request:
+  runs-on: ubuntu-latest #this is the platform the build will run on
+  setps:
+  - uses: actions/checkout@v2 #this brings the source code into the current working directory. Can allow you to run commands from the command line as well.
+  - uses: actions/setup-node@v1 #sets up node js on the ubuntu machine
+    with:
+      node-version: 12
+      - run: npm ci #does a clean insall
+      - run: npm test #runs a test with npm
+      - run: npm run build #build's everthing
